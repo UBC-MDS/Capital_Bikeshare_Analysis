@@ -23,6 +23,10 @@ main <-function(){
   cat("\n===> print head of the hour_df\n")
   print(head(hour_df))
 
+
+  tidy_day_df <- day_df %>%
+    rename(both = cnt) %>%
+    gather("rental_type","rental_num", casual, registered, both )
 }
 
 # get the range for the category high, mid and low ridership in term of count
@@ -49,6 +53,8 @@ get_range_for_rentalship <- function()
   geom_histogram()
 
   quantile(day_df$cnt,0.66)
+
+
 }
 
 main()
