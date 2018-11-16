@@ -13,4 +13,4 @@ Here is a table of tasks that we have performed and the link to the relevant scr
 
 | Task Description | Link |
 |---|---|
-| Loading the Daily Ridership Data | [load_csv.R](https://github.com/UBC-MDS/DSCI_522_Capital_Bikeshare_Analysis/blob/master/src/load_csv.R) |
+| Loading the Daily Ridership Data | [load_csv.R](https://github.com/UBC-MDS/DSCI_522_Capital_Bikeshare_Analysis/blob/master/src/load_csv.R) To run script under **project** directory, `Rscript src/load_csv.R` |
