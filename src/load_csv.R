@@ -24,6 +24,10 @@ main <-function(){
   cat("\n===> print head of the hour_df\n")
   print(head(hour_df))
 
+
+  tidy_day_df <- day_df %>%
+    rename(both = cnt) %>%
+    gather("rental_type","rental_num", casual, registered, both )
 }
 
 main()
