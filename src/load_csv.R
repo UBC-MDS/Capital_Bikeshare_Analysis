@@ -65,15 +65,20 @@ main <-function(){
   #%%
 
   # remove instant?
-  tidy_day_df$instant <- NULL
+  #tidy_day_df$instant <- NULL
+  
+  
+  #remove yr and instant column - only use the 'year' variable created above
+  tidy_day_df <- tidy_day_df %>% 
+        select(-yr,-instant)
   cat("done")
-
+  
   #%% for testing purpose
   # cat(sprintf("\n===> printint head of the TIDY data frame from %s\n", input_file))
   # print(head(tidy_day_df))
 
   cat(sprintf("\n===> saving tidy data to %s\n", output_file))
-  write.csv(tidy_day_df, file = output_file)
+  write.csv(tidy_day_df, file = output_file, row.names = FALSE)
   cat("done\n")
 
 }
