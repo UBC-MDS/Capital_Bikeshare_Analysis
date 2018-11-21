@@ -26,6 +26,16 @@ output_file <- args[2]
 # output_file <- "data/tidy_day_csv"
 file_name <- basename(input_file)
 
+#%% initate the report string for ranges for printing
+range_rpt <- "
+Rentalship Category and Range from %s
+=====================================
+Low           <=  %s
+Mid           Between  %s and  %s
+High          >=  %s
+\n
+"
+
 
 
 #%% main function to read csv and clean data
@@ -72,9 +82,15 @@ main <-function(){
   # cat(sprintf("\n===> printint head of the TIDY data frame from %s\n", input_file))
   # print(head(tidy_day_df))
 
+
+
   cat(sprintf("\n===> saving tidy data to %s\n", output_file))
   write.csv(tidy_day_df, file = output_file)
   cat("done\n")
+
+  #%% printing range report
+  cat(sprintf(range_rpt,
+    input_file, low_range, low_range, high_range, high_range))
 
 }
 
