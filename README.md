@@ -12,6 +12,6 @@ Splitting the dataset randomly into two sets will create both a training and tes
 
 Here is a table of tasks that we have performed and the link to the relevant script.
 
-| Task Description                 | Link                                                                                                    | Instruction                                           |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| Loading the Daily Ridership Data | [load_csv.R](https://github.com/UBC-MDS/DSCI_522_Capital_Bikeshare_Analysis/blob/master/src/load_csv.R) | Under **project** directory, `Rscript src/load_csv.R` |
+| Task Description                 | Link                                                                                                    | Instruction                                                                            |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Loading the Daily Ridership Data | [load_csv.R](https://github.com/UBC-MDS/DSCI_522_Capital_Bikeshare_Analysis/blob/master/src/load_csv.R) | Under **project** directory, `Rscript src/load_csv.R data/day.csv data/cleand_day.csv` |
