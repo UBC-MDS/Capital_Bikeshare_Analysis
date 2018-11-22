@@ -22,7 +22,9 @@ main <- function(){
       ggpairs(filter(tidy_day_df,rental_type == "both"), columns = c(8,9,10,11,12))
       
       # useful to see ridership during weather conditions
-      ggplot(tidy_day_df, aes(x = rentalship, y = as.factor(weathersit))) +
+      tidy_day_df %>% 
+            filter(rental_type == "both") %>% 
+      ggplot( aes(x = rentalship, y = as.factor(weathersit))) +
             geom_bin2d() +
             facet_grid(rental_type ~ .)
       
