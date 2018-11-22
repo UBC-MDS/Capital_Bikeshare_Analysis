@@ -2,9 +2,9 @@
 # Evan Yathon, November 2018
 #
 # This script reads in a cleaned dataset and creates exploratory visualizations.
-# Visualizations are then saved to a specified output path
+# Visualizations are then saved to a specified output path and prefix
 #
-# Usage: Rscript src/eda_plots.R data/tidy_day.csv img/
+# Usage: Rscript src/eda_plots.R data/tidy_day.csv img/prefix
 # 
 
 # load argument for input data and output path
