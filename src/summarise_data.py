@@ -74,6 +74,8 @@ def main():
                 'windspeed',
                 'day_in_month']
 
+    if 'hour' in input_file:
+        features.append('hr')
     target = 'rentalship'
 
     # %% select only rows with rental_type as both
@@ -82,7 +84,7 @@ def main():
     X = data_both[features]
     y = data_both[target]
     tree_depth, accuracy_score = get_tree_depth(X, y, 50)
-
+    # %% get the class_names and sorted
     classes = y.unique()
     classes.sort()
     # %% initialize and fit the tree
