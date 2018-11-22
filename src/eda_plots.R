@@ -8,32 +8,41 @@
 
 # load libraries
 suppressMessages(library(tidyverse))
-library(GGally)
 
 main <- function(){
       
       tidy_day_df <- read_csv("data/tidy_day.csv")
       
+      tidy_day_df <- tidy_day_df %>% 
+            filter(rental_type == "both")
+      
       #reorder factors in data so that it plots in logical order
       tidy_day_df <- tidy_day_df %>% 
             mutate(rentalship = fct_relevel(rentalship, c("Low","Mid","High")),
-                   rental_type = as_factor(rental_type))
+                   weathersit = as.factor(weathersit),
+                   weathersit = fct_recode(weathersit, 
+                                           clear = "1",
+                                           misty = "2",
+                                           light_rain = "3"))
       
-      ggpairs(filter(tidy_day_df,rental_type == "both"), columns = c(8,9,10,11,12))
+      # show the ridership histogram and display the lines where the cutoffs were made
+      ranges <- unname(quantile(tidy_day_df$rental_num,c(0.33,0.66)))
+      
+      tidy_day_df %>% 
+            ggplot(aes(x = rental_num)) +
+            geom_histogram(colour = "black", bins = 30, fill = "dodgerblue3") +
+            geom_vline(xintercept = ranges, size = 1.5, lty = 2)
       
       # useful to see ridership during weather conditions
       tidy_day_df %>% 
-            filter(rental_type == "both") %>% 
-      ggplot( aes(x = rentalship, y = as.factor(weathersit))) +
-            geom_bin2d() +
-            facet_grid(rental_type ~ .)
+      ggplot(aes(x = rentalship, y = weathersit)) +
+            geom_bin2d() 
       
-      # only both rental types
+      # Another way to see ridership during weather conditions
       tidy_day_df %>% 
-            filter(rental_type == "both") %>% 
-      ggplot(aes(x = rentalship, y = as.factor(weathersit))) +
-            geom_bin2d() +
-            facet_grid(rental_type ~ .)
+            ggplot(aes(x = as.factor(weathersit), y = rental_num)) +
+            geom_boxplot() +
+            geom_jitter()
       
       # calculate actual temperature
       tidy_day_df <- tidy_day_df %>% 
@@ -42,25 +51,16 @@ main <- function(){
       # useful to see ridership with reponse to temperature
       # output suggests that converting temp back to original values not necessary
       ggplot(tidy_day_df, aes(x = temp, y = rental_num)) +
-            geom_point() +
-            facet_grid(rental_type ~ .)
+            geom_point()
       
       #check to see if actual temp effects the ridership
       ggplot(tidy_day_df, aes(x = actual_temp, y = rental_num)) +
-            geom_point() +
-            facet_grid(rental_type ~ .)
+            geom_point()
       
-      # plot to see rentalship numbers 
+      # plot to see rentalship numbers by season
       tidy_day_df %>% 
             ggplot(aes(x = as.factor(season), y = rental_num)) +
-                  geom_boxplot() +
-                  facet_grid(rental_type ~ .)
-      
-      tidy_day_df %>% 
-            filter(rental_type == "both") %>% 
-      ggplot(aes(x = as.factor(weathersit), y = rental_num)) +
-            geom_boxplot() +
-            geom_jitter()
+                  geom_boxplot()
       
 
 }
