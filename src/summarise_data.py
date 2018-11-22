@@ -83,6 +83,8 @@ def main():
     y = data_both[target]
     tree_depth, accuracy_score = get_tree_depth(X, y, 50)
 
+    classes = y.unique()
+    classes.sort()
     # %% initialize and fit the tree
     print("===> training decision tree")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
@@ -101,6 +103,7 @@ def main():
                     filled=True,
                     rounded=True,
                     feature_names=features,
+                    class_names=classes.tolist(),
                     special_characters=True)
     graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
     Image(graph.create_png())
