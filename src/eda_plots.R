@@ -1,10 +1,17 @@
 # eda_plots.R
 # Evan Yathon, November 2018
 #
-# This script reads in a cleaned dataset and creates exploratory visualizations
+# This script reads in a cleaned dataset and creates exploratory visualizations.
+# Visualizations are then saved to a specified output path
 #
+# Usage: Rscript src/eda_plots.R data/tidy_day.csv img/
+# 
 
-
+# load argument for input data and output path
+# args <- commandArgs(trailingOnly = TRUE)
+# 
+# input_file <- args[1]
+# output_path <- args[2]
 
 # load libraries
 suppressMessages(library(tidyverse))
