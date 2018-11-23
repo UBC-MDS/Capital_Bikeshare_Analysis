@@ -4,14 +4,14 @@
 # This script reads in a cleaned dataset and creates exploratory visualizations.
 # Visualizations are then saved to a specified output path and prefix
 #
-# Usage: Rscript src/eda_plots.R data/tidy_day.csv img/prefix
+# Usage: Rscript src/eda_plots.R data/tidy_day.csv img/plot
 # 
 
 # load argument for input data and output path
-# args <- commandArgs(trailingOnly = TRUE)
-# 
-# input_file <- args[1]
-# output_path <- args[2]
+args <- commandArgs(trailingOnly = TRUE)
+
+input_file <- args[1]
+output_path <- args[2]
 
 # load libraries
 suppressMessages(library(tidyverse))
@@ -20,8 +20,8 @@ library(pracma)
 
 main <- function(){
       
-      tidy_df <- read_csv("data/tidy_day.csv")
-      # tidy_df = read_csv(input_file)
+      # tidy_df <- read_csv("data/tidy_day.csv")
+      tidy_df = read_csv(input_file)
       
       tidy_df <- tidy_df %>% 
             filter(rental_type == "both")
@@ -79,8 +79,8 @@ main <- function(){
       
       
       # useful to see ridership during weather conditions
-      weather_rentalship_heatmap <- tidy_df %>% 
-      (ggplot(aes(x = rentalship, y = weathersit)) +
+      (weather_rentalship_heatmap <- tidy_df %>% 
+      ggplot(aes(x = rentalship, y = weathersit)) +
             geom_bin2d() +
             labs(x = "Rentalship Categories",
                  y = "Weather Situation",
@@ -122,14 +122,14 @@ main <- function(){
       ) 
       
       #saving the plots to the location specified
-      # ggsave(paste(output_path,"_ridership_histo.png"), 
-      #        plot = ridership_histo, device = "png")
-      # ggsave(paste(output_path,"_weather_rentalship_heatmap.png"), 
-      #        plot = weather_rentalship_heatmap, device = "png")
-      # ggsave(paste(output_path,"_atom_crossplot.png"), 
-      #        plot = atemp_crossplot, device = "png")
-      # ggsave(paste(output_path,"_rider_by_date.png"), 
-      #        plot = rider_by_date, device = "png")
+      ggsave(paste(output_path,"_ridership_histo.png", sep = ""),
+             plot = ridership_histo, device = "png")
+      ggsave(paste(output_path,"_weather_rentalship_heatmap.png", sep = ""),
+             plot = weather_rentalship_heatmap, device = "png", width = 9)
+      ggsave(paste(output_path,"_atemp_crossplot.png", sep = ""),
+             plot = atemp_crossplot, device = "png")
+      ggsave(paste(output_path,"_rider_by_date.png", sep = ""),
+             plot = rider_by_date, device = "png", width = 12)
       
 }
 
