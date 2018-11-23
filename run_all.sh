@@ -12,11 +12,17 @@ Rscript src/load_csv.R data/day.csv data/cleaned_day.csv &
 wait $!
 
 # produce summary result
-echo "Gennerate Summary"
+echo "Generate Summary"
 python3 src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png &
 wait $!
 
 # Produce Graphs
+echo "Creating EDA Plots"
+Rscript src/eda_plots.R data/tidy_day.csv img/plot
+wait $!
+
+# produce top ML attributes chart
+
 
 # Make report
 

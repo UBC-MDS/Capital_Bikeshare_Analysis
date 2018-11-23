@@ -68,6 +68,7 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
     -   `ggplot2`
     -   `rmarkdown`
     -   `knitr`
+    -   `pracma`
 -   ### Python
     -   `pandas`
     -   `numpy`
