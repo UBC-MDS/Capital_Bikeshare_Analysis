@@ -139,7 +139,7 @@ def get_tree_depth(X_arg, y_arg, max_depth):
     accuracy_scores = []
     for i in tqdm(depth_list, ncols=100, unit_scale=True):
         if (i > 0):
-            model = DecisionTreeClassifier(max_depth=int(i))
+            model = DecisionTreeClassifier(max_depth=int(i), random_state=2018)
             score = model_selection.cross_val_score(
                 model, X_arg, y_arg, cv=10).mean()
             accuracy_scores.append(score)
