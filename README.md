@@ -8,7 +8,7 @@ We are interested in answering the question.
 
 > **What are the top predictors of rental bike ridership?**
 
-To answer this question, we used data originally sourced from [Capital Bikeshare](https://www.capitalbikeshare.com) in metro DC. We intend to perform supervised machine learning using decision tree classification.  Valid features such as temperature, weather and day of the week will be included.  In order to simplify the potential ridership outcomes, the ridership will be broken into different categories; an example could be `Low`, `Medium` and `High` ridership.  To find the bounds of the categories, We use quantile to to evenly split the the number of rentals per day in our data. Data cleaning and wrangling will be performed.
+To answer this question, we used data originally sourced from [Capital Bikeshare](https://www.capitalbikeshare.com) in metro DC. We intend to perform supervised machine learning using decision tree classification.  Valid features such as temperature, weather and day of the week will be included.  In order to simplify the potential ridership outcomes, the ridership will be broken into different categories; an example could be `Low`, `Medium` and `High` ridership.  To find the bounds of the categories, We use quantile to evenly split the number of rentals per day in our data. Data cleaning and wrangling will be performed.
 
 To optimize the accuracy of the decision tree, we perform cross validation on the cleaned data to define the ideal maximum height for the tree.  The decision tree will be trained using the height. By visualizing the tree and utilizing scikit-learn's `feature_importances_` function, we will determine which of the features are the strong predictors of bicycle ridership.
 
