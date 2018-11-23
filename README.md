@@ -2,17 +2,15 @@
 
 <sup>Mike Yuan ([Mikeymice](https://github.com/Mikeymice)) and Evan Yathon ([EvanYathon](https://github.com/EvanYathon)) </sup>
 
-## Introduction
-
 Bike sharing systems are becoming one of popular transportation measures in the urban areas. The bike share systems usually provide customers with durable bikes and stations for rental and parking. The bikes can be unlocked from any station and returned to any station at any time.
 
 We are interested in answering the question.
 
 > **What are the top predictors of rental bike ridership?**
 
-To answer this question, we used data originally sourced from [Capital Bikeshare](https://www.capitalbikeshare.com) in metro DC. We intend to perform supervised machine learning using decision tree classification.  Valid features such as temperature, weather and day of the week will be included.  In order to simplify the potential ridership outcomes, the ridership will be broken into different categories; an example could be low, medium and high ridership.  To find the bounds of the categories some initial exploratory data analysis will be performed to investigate the number of riders.  Our initial idea is a histogram of ridership and using quantiles to evenly split the data into thirds.
+To answer this question, we used data originally sourced from [Capital Bikeshare](https://www.capitalbikeshare.com) in metro DC. We intend to perform supervised machine learning using decision tree classification.  Valid features such as temperature, weather and day of the week will be included.  In order to simplify the potential ridership outcomes, the ridership will be broken into different categories; an example could be `Low`, `Medium` and `High` ridership.  To find the bounds of the categories, We use quantile to to evenly split the the number of rentals per day in our data. Data cleaning and wrangling will be performed.
 
-Splitting the dataset randomly into two sets will create both a training and test dataset.  The decision tree will be trained using the training dataset, and then predict the outcome of the test dataset.  Because the actual ridership outcomes are known for the test dataset, the predicted outcomes can be compared to the actual outcomes and a percentage of correctly identified outcomes will be generated.  Using a visualization of the tree and/or scikit-learn's `feature_importances_` function will determine which of the features are the top three strongest predictors of bicycle ridership.
+To optimize the accuracy of the decision tree, we perform cross validation on the cleaned data to define the ideal maximum height for the tree.  The decision tree will be trained using the height. By visualizing the tree and utilizing scikit-learn's `feature_importances_` function, we will determine which of the features are the strong predictors of bicycle ridership.
 
 ## Data Attributes
 
@@ -59,6 +57,8 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
     ```sh
     bash run_all.sh
     ```
+
+3.  The report will be generated under the  `report/` directory
 
 ## Dependencies
 
