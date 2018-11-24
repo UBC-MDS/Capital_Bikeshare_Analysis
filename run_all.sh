@@ -13,7 +13,7 @@ wait $!
 
 # produce summary result
 echo "Generate Summary"
-python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png &
+python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png result/tree_summary.csv &
 wait $!
 
 # Produce Graphs

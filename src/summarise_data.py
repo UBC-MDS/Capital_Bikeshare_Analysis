@@ -29,12 +29,13 @@ parser.add_argument('input_file')
 parser.add_argument('output_file')
 parser.add_argument('accuracy_fig_path')
 parser.add_argument('tree_fig_path')
+parser.add_argument('tree_summary_path')
 args = parser.parse_args()
 input_file = args.input_file
 output_file = args.output_file
 accuracy_fig_path = args.accuracy_fig_path
 tree_fig_path = args.tree_fig_path
-
+tree_summary_path = args.tree_summary_path
 # n_top_features = 5  # for picking up number of top features
 # for testing
 # input_file = "data/tidy_day.csv"
@@ -124,6 +125,13 @@ def main():
                              accuracy_fig_path,
                              tree_fig_path,
                              output_file))
+
+    # save tree summary to csv file
+    tree_summary = {'optimal_tree_depth': tree_depth,
+                    'accuracy_score': accuracy_score}
+    tree_summary_df = pd.DataFrame(data=tree_summary,
+                                   index=[0])
+    tree_summary_df.to_csv(tree_summary_path)
 
 
 # make the importance df and save as csv
