@@ -46,7 +46,7 @@ tree_fig_path = args.tree_fig_path
 summary_rpt = '''\nTREE SUMMARY
 =============================
 the optimal tree depth: {0}
-average accuracy score: {1}
+accuracy score: {1}
 
 FILE PATH
 =============================
@@ -83,16 +83,21 @@ def main():
 
     X = data_both[features]
     y = data_both[target]
-    tree_depth, accuracy_score = get_tree_depth(X, y, 50)
+
     # %% get the class_names and sorted
     classes = y.unique()
     classes.sort()
     # %% initialize and fit the tree
     print("===> training decision tree")
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
-    #tree = DecisionTreeClassifier()
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.20, random_state=2018)
+
+    tree_depth, accuracy_score = get_tree_depth(X_train, y_train, 50)
+
     tree = DecisionTreeClassifier(max_depth=tree_depth)
-    tree.fit(X, y)
+    tree.fit(X_train, y_train)
+
+    accuracy_score = tree.score(X_test, y_test)
     print("done")
 
     #tree.score(X_test, y_test)
