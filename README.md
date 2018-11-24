@@ -12,6 +12,8 @@ To answer this question, we used data originally sourced from [Capital Bikeshare
 
 To optimize the accuracy of the decision tree, we performed cross validation on the cleaned data to define the ideal maximum height for the tree.  The decision tree will be trained using this optimal height. By visualizing the tree and utilizing scikit-learn's `feature_importances` function, we determined which of the features are the strong predictors of daily bicycle ridership.
 
+[Link to report.](report/capital_bikeshare_analysis.md)
+
 ## Data Attributes
 
 This analysis is performed on the [Bike Sharing Dataset](https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset) provided by the UCI Machine Learning Repository
