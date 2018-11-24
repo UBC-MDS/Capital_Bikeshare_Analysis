@@ -3,7 +3,7 @@
 # This script takes the output from scikit learn's featrures_importance and plots them
 # to output a figure
 #
-# Usage: Rscript src/important_features.R result/summarised_data.csv img/important_features.png
+# Usage: Rscript src/important_features.R result/summarised_data.csv report/img/important_features.png
 
 # load argument for input data and output path
 args <- commandArgs(trailingOnly = TRUE)

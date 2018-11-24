@@ -1,7 +1,9 @@
 # summarise_data.py
 #
+# By Mike Yuan, November 2018
+#
 # take the tidy set and create decision treeabs
-# Usage: python3 src/summarise_data.py data/tidy_day.csv result/summarised_day.csv
+# Usage: python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv report/img/accuracy.png report/img/dtree.png result/tree_summary.csv
 #
 
 
