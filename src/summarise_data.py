@@ -29,12 +29,13 @@ parser.add_argument('input_file')
 parser.add_argument('output_file')
 parser.add_argument('accuracy_fig_path')
 parser.add_argument('tree_fig_path')
+parser.add_argument('tree_summary_path')
 args = parser.parse_args()
 input_file = args.input_file
 output_file = args.output_file
 accuracy_fig_path = args.accuracy_fig_path
 tree_fig_path = args.tree_fig_path
-
+tree_summary_path = args.tree_summary_path
 # n_top_features = 5  # for picking up number of top features
 # for testing
 # input_file = "data/tidy_day.csv"
@@ -46,7 +47,7 @@ tree_fig_path = args.tree_fig_path
 summary_rpt = '''\nTREE SUMMARY
 =============================
 the optimal tree depth: {0}
-average accuracy score: {1}
+accuracy score: {1}
 
 FILE PATH
 =============================
@@ -83,16 +84,21 @@ def main():
 
     X = data_both[features]
     y = data_both[target]
-    tree_depth, accuracy_score = get_tree_depth(X, y, 50)
+
     # %% get the class_names and sorted
     classes = y.unique()
     classes.sort()
     # %% initialize and fit the tree
     print("===> training decision tree")
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
-    #tree = DecisionTreeClassifier()
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.20, random_state=2018)
+
+    tree_depth, accuracy_score = get_tree_depth(X_train, y_train, 50)
+
     tree = DecisionTreeClassifier(max_depth=tree_depth)
-    tree.fit(X, y)
+    tree.fit(X_train, y_train)
+
+    accuracy_score = tree.score(X_test, y_test)
     print("done")
 
     #tree.score(X_test, y_test)
@@ -119,6 +125,13 @@ def main():
                              accuracy_fig_path,
                              tree_fig_path,
                              output_file))
+
+    # save tree summary to csv file
+    tree_summary = {'optimal_tree_depth': tree_depth,
+                    'accuracy_score': accuracy_score}
+    tree_summary_df = pd.DataFrame(data=tree_summary,
+                                   index=[0])
+    tree_summary_df.to_csv(tree_summary_path)
 
 
 # make the importance df and save as csv

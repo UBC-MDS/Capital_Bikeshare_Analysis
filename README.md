@@ -43,13 +43,16 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
 ## Usage
 
 1.  Clone this repo, and using the command line, navigate to the root of this project.
-2.  Run the following commands:
+2.  Run the following commands one by one:
 
     ```sh
     Rscript src/load_csv.R data/day.csv data/cleaned_day.csv
-    python3 src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png
 
-    # add more script below REMOVE THIS LINE afterward!!!!!
+    python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png result/tree_summary.csv
+
+    Rscript src/eda_plots.R data/cleaned_day.csv img/plot
+
+    Rscript src/important_features.R result/summarised_data.csv img/important_features.png
     ```
 
     or on your command shell
