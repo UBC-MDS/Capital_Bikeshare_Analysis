@@ -1,10 +1,12 @@
 # load_csv.R
 #
+# By Mike Yuan, November 2018
+#
 # This script load the .csv filename that is provided as arugment output
 # the clean/tidy version of data in csv with direcotry/filename provided in
 # arugments
 #
-# Usage: Under project directory run the command Rscript src/load_csv.R
+# Usage: Under project directory run the command Rscript src/load_csv.R data/day.csv data/cleaned_day.csv
 
 
 #%% bload library

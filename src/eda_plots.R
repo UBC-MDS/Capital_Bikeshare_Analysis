@@ -4,7 +4,7 @@
 # This script reads in a cleaned dataset and creates exploratory visualizations.
 # Visualizations are then saved to a specified output path and prefix
 #
-# Usage: Rscript src/eda_plots.R data/tidy_day.csv img/plot
+# Usage: Rscript src/eda_plots.R data/tidy_day.csv report/img/plot
 # 
 
 # load argument for input data and output path
@@ -52,7 +52,7 @@ main <- function(){
             geom_histogram(colour = "black", bins = 30, fill = "dodgerblue3") +
             geom_vline(xintercept = ranges, size = 1.5, lty = 2) +
             labs(x = "Daily Rental Numbers",
-                 title = "Histogram of Daily Bike Rentals with Quantile Lines") +
+                 title = "Histogram of Daily Bike \nRentals with Quantile Lines") +
             annotate("text",
                      x = 1250,
                      y = 45,
@@ -84,7 +84,7 @@ main <- function(){
             geom_bin2d() +
             labs(x = "Rentalship Categories",
                  y = "Weather Situation",
-                 title = "Heatmap of Ridership for Different Weather Conditions") +
+                 title = "Heatmap of Ridership for\n Different Weather Conditions") +
             theme(text = element_text(size = 15)))
    
       
@@ -123,13 +123,13 @@ main <- function(){
       
       #saving the plots to the location specified
       ggsave(paste(output_path,"_ridership_histo.png", sep = ""),
-             plot = ridership_histo, device = "png")
+             plot = ridership_histo, device = "png", width = 6, height = 4)
       ggsave(paste(output_path,"_weather_rentalship_heatmap.png", sep = ""),
-             plot = weather_rentalship_heatmap, device = "png", width = 9)
+             plot = weather_rentalship_heatmap, device = "png", width = 6, height = 4)
       ggsave(paste(output_path,"_atemp_crossplot.png", sep = ""),
-             plot = atemp_crossplot, device = "png")
+             plot = atemp_crossplot, device = "png", width = 6, height = 4)
       ggsave(paste(output_path,"_rider_by_date.png", sep = ""),
-             plot = rider_by_date, device = "png", width = 12)
+             plot = rider_by_date, device = "png", width = 6, height = 4)
       
 }
 

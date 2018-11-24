@@ -48,11 +48,11 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
     ```sh
     Rscript src/load_csv.R data/day.csv data/cleaned_day.csv
 
-    python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png result/tree_summary.csv
+    python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv report/img/accuracy.png report/img/dtree.png result/tree_summary.csv
 
-    Rscript src/eda_plots.R data/cleaned_day.csv img/plot
+    Rscript src/eda_plots.R data/cleaned_day.csv report/img/plot
 
-    Rscript src/important_features.R result/summarised_data.csv img/important_features.png
+    Rscript src/important_features.R result/summarised_data.csv report/img/important_features.png
     ```
 
     or on your command shell
