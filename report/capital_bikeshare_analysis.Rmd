@@ -1,0 +1,32 @@
+---
+title: "Top Predictors for Daily Ridership in the Capital Bike Share System"
+output: github_document
+author: "Mike Yuan and Evan Yathon"
+date: "2018-11-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+Bike sharing systems are popular in urban centres as an easy and effective way for people to get from one location to another.  Economical, environmental and health benefits are some motivators behind the choice to use a bike sharing service for commuting.  Knowing the factors that influence whether a person chooses to rent a bike is important to forecast usage and understand drivers behind daily bike rentals.  This is why we chose to investigate the top three predictors of rental bike ridership using the [Capital Bike Share Dataset](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset)<sup>1</sup>.
+
+### What are the top three predictors of rental bike ridership?
+
+To answer this question, we decided to use a decision tree to predict daily ridership.  Our approach required the ridership to be split into categories; below is a histogram visualizing that split.
+
+![](img/plot_ridership_histogram.png)
+
+
+
+
+
+
+
+
+
+## References
+1. [Capital Bike Share Dataset](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset)
+      - Used the `day.csv` dataset.
+2. 
