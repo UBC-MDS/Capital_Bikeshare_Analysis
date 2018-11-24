@@ -6,10 +6,10 @@
 # Usage: Rscript src/important_features.R result/summarised_data.csv img/important_features.png
 
 # load argument for input data and output path
-# args <- commandArgs(trailingOnly = TRUE)
-# 
-# input_file <- args[1]
-# output_file <- args[2]
+args <- commandArgs(trailingOnly = TRUE)
+
+input_file <- args[1]
+output_file <- args[2]
 
 
 # load packages
@@ -17,9 +17,9 @@ suppressMessages(library(tidyverse))
 
 main <- function(){
       
-      # imp_feat <- read_csv(input_file)
+      imp_feat <- read_csv(input_file)
       
-      imp_feat <- read_csv("result/summarised_data.csv")
+      # imp_feat <- read_csv("result/summarised_data.csv")
       
       (imp_feat_plot <- imp_feat %>% 
             select(-X1) %>% 
@@ -34,8 +34,8 @@ main <- function(){
       )
       
       #save the plots to the specified file
-      # ggsave(output_file,
-      #        plot = ridership_histo, device = "png", width = 9)
+      ggsave(output_file,
+             plot = imp_feat_plot, device = "png", width = 9)
 }
 
 main()
