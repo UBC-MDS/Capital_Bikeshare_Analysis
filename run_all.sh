@@ -22,7 +22,9 @@ Rscript src/eda_plots.R data/cleaned_day.csv img/plot
 wait $!
 
 # produce top ML attributes chart
-
+echo "Creating Feature Importance Plot"
+Rscript src/important_features.R result/summarised_data.csv img/important_features.png
+wait $!
 
 # Make report
 
