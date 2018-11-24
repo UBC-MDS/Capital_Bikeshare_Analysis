@@ -55,6 +55,8 @@ accuracy figure: {2}
 tree figure: {3}
 features summary: {4}\n'''
 
+RANDOM_STATE = 2018
+
 
 def main():
     print("===> loading csv")
@@ -91,11 +93,12 @@ def main():
     # %% initialize and fit the tree
     print("===> training decision tree")
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.20, random_state=2018)
+        X, y, test_size=0.20, random_state=RANDOM_STATE)
 
     tree_depth, accuracy_score = get_tree_depth(X_train, y_train, 50)
 
-    tree = DecisionTreeClassifier(max_depth=tree_depth)
+    tree = DecisionTreeClassifier(
+        max_depth=tree_depth, random_state=RANDOM_STATE)
     tree.fit(X_train, y_train)
 
     accuracy_score = tree.score(X_test, y_test)
@@ -152,7 +155,8 @@ def get_tree_depth(X_arg, y_arg, max_depth):
     accuracy_scores = []
     for i in tqdm(depth_list, ncols=100, unit_scale=True):
         if (i > 0):
-            model = DecisionTreeClassifier(max_depth=int(i), random_state=2018)
+            model = DecisionTreeClassifier(
+                max_depth=int(i), random_state=RANDOM_STATE)
             score = model_selection.cross_val_score(
                 model, X_arg, y_arg, cv=10).mean()
             accuracy_scores.append(score)
