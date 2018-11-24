@@ -15,8 +15,8 @@ output_path <- args[2]
 
 # load libraries
 suppressMessages(library(tidyverse))
-library(lubridate)
-library(pracma)
+suppressMessages(library(lubridate))
+suppressMessages(library(pracma))
 
 main <- function(){
       

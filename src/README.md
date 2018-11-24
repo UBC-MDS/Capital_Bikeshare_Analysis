@@ -17,3 +17,6 @@ The list of the scripts will be updated periodically
 | file                     | description                  |
 | ------------------------ | ---------------------------- |
 | [load_csv.R](load_csv.R) | Load csv file in data folder |
+| [eda_plots.R](eda_plots.R) | Create EDA plots for final report |
+| [summarise_data.py](summarise_data.py) | Run decision tree and calculate feature importance on data output from [load_csv.R](load_csv.R) |
+| [important_features.R](important_features.R) | Takes output important features csv from [summarise_data.py](summarise_data.py) and makes a summary chart |

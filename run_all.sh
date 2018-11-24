@@ -13,16 +13,18 @@ wait $!
 
 # produce summary result
 echo "Generate Summary"
-python3 src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png &
+python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv img/accuracy.png img/dtree.png &
 wait $!
 
 # Produce Graphs
 echo "Creating EDA Plots"
-Rscript src/eda_plots.R data/tidy_day.csv img/plot
+Rscript src/eda_plots.R data/cleaned_day.csv img/plot
 wait $!
 
 # produce top ML attributes chart
-
+echo "Creating Feature Importance Plot"
+Rscript src/important_features.R result/summarised_data.csv img/important_features.png
+wait $!
 
 # Make report
 
