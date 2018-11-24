@@ -27,5 +27,6 @@ Rscript src/important_features.R result/summarised_data.csv report/img/important
 wait $!
 
 # Make report
+Rscript -e "rmarkdown::render('report/capital_bikeshare_analysis.Rmd')"
 
 echo "COMPLETED"
