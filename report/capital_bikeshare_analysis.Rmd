@@ -23,10 +23,15 @@ To answer this question, we decided to use a decision tree to predict daily ride
 
 Figure 1 gives an idea of the daily ridership count from the Capital Bikeshare system in Washington, D.C. over the period of two years.  Our decision was to split daily ridership into equal thirds so that the decision tree would have an equal split of target categories to learn from.  The resulting categories are low, mid and high ridership numbers on a daily basis.
 
-There are many different features in the dataset, including temperature, humidity as 
+There are many different features in the dataset, including temperature, humidity and weather conditions.
 
+![Figure 2](img/plot_rider_by_date.png)
 
+##### Figure 2. Daily Ridership over the course of two years, coloured by season.  Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise.
 
+As seen above in figure 2 there is a cyclical trend in the ridership numbers, with decrease in ridership happening in late autumn and winter.  2012 also seems to have significantly higher ridership numbers than 2011.  At first glance it would appear that these features might be some of the predictors that we are looking for  
+
+### Decision Tree Analysis
 
 
 

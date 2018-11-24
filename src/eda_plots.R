@@ -118,7 +118,7 @@ main <- function(){
                            y = 7500,
                            label = "--- Moving Average",
                            colour = "black",
-                           size = 6)
+                           size = 4)
       ) 
       
       #saving the plots to the location specified
@@ -129,7 +129,7 @@ main <- function(){
       ggsave(paste(output_path,"_atemp_crossplot.png", sep = ""),
              plot = atemp_crossplot, device = "png", width = 6, height = 4)
       ggsave(paste(output_path,"_rider_by_date.png", sep = ""),
-             plot = rider_by_date, device = "png", width = 6, height = 4)
+             plot = rider_by_date, device = "png", width = 8, height = 4)
       
 }
 
