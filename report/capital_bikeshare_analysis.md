@@ -45,9 +45,9 @@ Figure 4. Visualization of the final fitted decision tree.
 
 Figure 4 shows the classification steps undertaken by the model to split data into final ridership categories. Green nodes are classified as `Low` ridership, purple are `Mid` level ridership and orange are `High` ridership. The intensity of the colour represents purity at each location. The stump is split immediately on the year feature, with more `Low` and `Mid` ridership belonging to 2011 and a higher proportion of high ridership belonging to 2012. This agrees with what we've seen and guessed from figure 2, but what about season? It would be arduous to examine the entire tree and all decision splits.
 
-<img src="img/important_features.png" alt="Feature importance rated by Gini Value." width="2700" />
+<img src="img/important_features.png" alt="Figure 5. Feature importance rated by Gini Value." width="2700" />
 <p class="caption">
-Feature importance rated by Gini Value.
+Figure 5. Feature importance rated by Gini Value.
 </p>
 
 Figure 5 holds the answer to our initial question; it appears that temperature, year and season were the top three predictors for this dataset. Other features such as `atemp`, which is 'feels like' temperature, were also somewhat important but didn't hold as much weight as the top three.
