@@ -45,25 +45,21 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
 ## Usage
 
 1.  Clone this repo, and using the command line, navigate to the root of this project.
-2.  Run the following commands one by one:
-
+2.  Run the following command to produce the report
     ```sh
-    Rscript src/load_csv.R data/day.csv data/cleaned_day.csv
-
-    python src/summarise_data.py data/cleaned_day.csv result/summarised_data.csv report/img/accuracy.png report/img/dtree.png result/tree_summary.csv
-
-    Rscript src/eda_plots.R data/cleaned_day.csv report/img/plot
-
-    Rscript src/important_features.R result/summarised_data.csv report/img/important_features.png
-
-    Rscript -e "rmarkdown::render('report/capital_bikeshare_analysis.Rmd')"
+    make all
     ```
-
     or on your command shell
 
     ```sh
     bash run_all.sh
     ```
+
+    Run the following command to clean previous result
+    ```sh
+    make clean
+    ```
+
 
 3.  The report will be generated under the  `report/` directory
 
