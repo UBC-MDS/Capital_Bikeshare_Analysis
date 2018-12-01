@@ -38,9 +38,10 @@ output_file = args.output_file
 accuracy_fig_path = args.accuracy_fig_path
 tree_fig_path = args.tree_fig_path
 tree_summary_path = args.tree_summary_path
+
 # n_top_features = 5  # for picking up number of top features
 # for testing
-# input_file = "data/tidy_day.csv"
+# input_file = "result/cleaned_day.csv"
 # output_file = "result/summarised_data.csv"
 # accuracy_fig_path = "img/accuracy.png"
 # tree_fig_path = "img/dtree.png"
@@ -106,7 +107,7 @@ def main():
     accuracy_score = tree.score(X_test, y_test)
     print("done")
 
-    #tree.score(X_test, y_test)
+    # tree.score(X_test, y_test)
     # visualize decision tree
     # Reference: https://medium.com/@rnbrown/creating-and-visualizing-decision-trees-with-python-f8e8fa394176
 
@@ -150,36 +151,54 @@ def save_feature_csv(features, feature_importances):
     print("done")
     print(df)
 
+# %% find optimal tree depth
+
 
 def get_tree_depth(X_arg, y_arg, max_depth):
     print("===> getting optimal tree depth")
     depth_list = np.linspace(1, max_depth, max_depth)
-    accuracy_scores = []
+
+    test_accuracy = []
+    train_accuracy = []
+    approx_err = []
+
     for i in tqdm(depth_list, ncols=100, unit_scale=True):
         if (i > 0):
             model = DecisionTreeClassifier(
                 max_depth=int(i), random_state=RANDOM_STATE)
-            score = model_selection.cross_val_score(
-                model, X_arg, y_arg, cv=10).mean()
-            accuracy_scores.append(score)
+            scores = model_selection.cross_validate(
+                model, X_arg, y_arg, cv=10, return_train_score=True)
+            test_score = scores['test_score'].mean()
+            train_score = scores['train_score'].mean()
+            approx_err_score = abs(test_score - train_score)
+            test_accuracy.append(test_score)
+            train_accuracy.append(train_score)
+            approx_err.append(approx_err_score)
 
-    index = np.argmax(accuracy_scores)
-
+    index = np.argmax(test_accuracy)
     print("===> saving accuracy graph")
     plt.figure(figsize=(8, 6))
-    plt.plot(depth_list, accuracy_scores, 'g-')
+    plt.plot(depth_list, test_accuracy, 'g-', label='Test Accuracy Score')
+    plt.plot(depth_list, train_accuracy, 'r-', label='Train Accuracy Score')
+    txt = 'depth = {0} with {1} accuracy'.format(
+        (index + 1), round(test_accuracy[index], 4))
+    #plt.axvline(x=(index + 1), ymin=0.2)
     plt.xlabel("Max Depth for Decision Tree")
     plt.ylabel("Accuracy Score")
     plt.title("Tree Depth vs Accuracy ")
+    plt.legend()
     txt = 'depth = {0} with {1} accuracy'.format(
-        (index + 1), round(accuracy_scores[index], 4))
-    plt.text((index + 2), accuracy_scores[index], txt, color='purple')
-    plt.plot((index + 1), accuracy_scores[index], 'ro')
-    plt.tight_layout()
+        (index + 1), round(test_accuracy[index], 4))
+    plt.text((index + 2), test_accuracy[index],
+             txt, color='purple', fontsize=14)
+    plt.plot((index + 1), test_accuracy[index], 'ro')
+
+    # plt.savefig('result/test.png')
     plt.savefig(accuracy_fig_path)
     print("saved at {0}".format(accuracy_fig_path))
+    index = np.argmax(test_accuracy)
 
-    return ((index + 1), accuracy_scores[index])
+    return ((index + 1), test_accuracy[index])
 
 
 

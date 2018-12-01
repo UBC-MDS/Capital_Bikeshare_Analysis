@@ -64,6 +64,19 @@ Both hour.csv and day.csv had the following fields, except hr which was not avai
 
 3.  The report is generated under the  `report/` directory
 
+## Workflow
+
+Our workflow was the following:
+
+1.  Perform data cleaning and feature engineering
+2.  Perform Machine Learning with Decision Tree and output feature importances
+3.  Use `ggplot2` to produce EDA graphs
+4.  Construct report with results from EDA and the Decision Tree model
+
+In order to reproduce our findings, both `Makefile` and `run_all.sh` took the same work flow to generate the report. The scripts would run `load_csv.R` to generate cleaned data. `summarise_data.py` would perform data analysis and produced result data. `eda_plot.R` would use cleaned data to generate plots and `importance_features.R` would also plot the feature importances from the result. Finally, with `knitr`, `capital_bikeshare_analysis.Rmd` would generate our final report in the `markdown` format.
+
+![](img/flowchart.png)
+
 ## V2.0 Dependencies
 
 -   ### R and R libraries (R Version 3.5.1)
