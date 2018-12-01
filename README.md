@@ -8,9 +8,9 @@ We are interested in answering the question.
 
 > **What are the top three predictors of rental bike ridership?**
 
-To answer this question, we used data originally sourced from [Capital Bikeshare](https://www.capitalbikeshare.com) in metro DC. We performed supervised machine learning using decision tree classification.  Valid features such as temperature, weather and day of the week were included.  In order to simplify the potential ridership outcomes, the ridership were broken into different categories;  `Low`, `Medium` and `High` ridership categories.  To find the bounds of the categories, we used quantiles to evenly split the number of rentals per day in our data. Data cleaning and wrangling were performed.
+To answer this question, we used data originally sourced from [Capital Bikeshare](https://www.capitalbikeshare.com) in metro DC. We performed supervised machine learning using decision tree classification.  Valid features such as temperature, weather and day of the week were included.  In order to simplify the potential ridership outcomes, the ridership was broken into different chunks;  `Low`, `Medium` and `High` ridership categories.  To find the bounds of the categories, we used quantiles to evenly split the number of rentals per day in our data. Data cleaning and wrangling were performed.
 
-To optimize the accuracy of the decision tree, we performed cross validation on the cleaned data to define the ideal maximum height for the tree.  The decision tree would be trained using this optimal height. By visualizing the tree and utilizing scikit-learn's `feature_importances` function, we determined which of the features are the strong predictors of daily bicycle ridership.
+To optimize the accuracy of the decision tree, we performed cross validation on the cleaned data to define the ideal maximum height for the tree.  The decision tree was trained using this optimal height. By visualizing the tree and utilizing scikit-learn's `feature_importances` function, we determined which of the features are the strong predictors of daily bicycle ridership.
 
 [Link to report.](report/capital_bikeshare_analysis.md)
 
@@ -42,8 +42,8 @@ Both hour.csv and day.csv had the following fields, except hr which was not avai
 
 ## Usage
 
-1.  Clone this repo, and using the command line, navigate to the root of this project.
-2.  Run the following command to produce the report
+1.  Clone this repo, and using the command line navigate to the root of this project.
+2.  Run the following command to produce the report:
 
     ```sh
     make all
@@ -62,24 +62,24 @@ Both hour.csv and day.csv had the following fields, except hr which was not avai
     ```
 
 
-3.  The report will be generated under the  `report/` directory
+3.  The report is generated under the  `report/` directory
 
 ## V2.0 Dependencies
 
--   ### R and R libraries
-    -   `tidyverse`
-    -   `lubridate`
-    -   `ggplot2`
-    -   `rmarkdown`
-    -   `knitr`
-    -   `pracma`
--   ### Python
-    -   `pandas`
-    -   `numpy`
-    -   `sklearn`
-    -   `graphviz`
-    -   `pydotplus`
-    -   `seaborn`
-    -   `Ipython`
-    -   `matplotlib`
-    -   `tqdm`
+-   ### R and R libraries (R Version 3.5.1)
+    -   `tidyverse` v1.2.1
+    -   `lubridate` v1.7.4
+    -   `ggplot2` v3.0.0
+    -   `rmarkdown` v1.10
+    -   `knitr` v1.20
+    -   `pracma` v2.1.8
+-   ### Python (Python Version 3.6.5)
+    -   `pandas` v0.23.0
+    -   `numpy` v1.14.3
+    -   `sklearn` v0.19.1
+    -   `graphviz` v0.10.1
+    -   `pydotplus` v2.0.2
+    -   `seaborn` v0.9.0
+    -   `Ipython` v6.4.0
+    -   `matplotlib` v2.2.2
+    -   `tqdm` v4.28.1
