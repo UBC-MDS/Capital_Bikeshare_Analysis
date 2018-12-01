@@ -197,7 +197,6 @@ def get_tree_depth(X_arg, y_arg, max_depth):
     plt.savefig(accuracy_fig_path)
     print("saved at {0}".format(accuracy_fig_path))
     index = np.argmax(test_accuracy)
-    print(index)
 
     return ((index + 1), test_accuracy[index])
 
