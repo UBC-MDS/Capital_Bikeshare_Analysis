@@ -75,7 +75,8 @@ Our workflow was the following:
 
 In order to reproduce our findings, both `Makefile` and `run_all.sh` took the same work flow to generate the report. The scripts would run `load_csv.R` to generate cleaned data. `summarise_data.py` would perform data analysis and produced result data. `eda_plot.R` would use cleaned data to generate plots and `importance_features.R` would also plot the feature importances from the result. Finally, with `knitr`, `capital_bikeshare_analysis.Rmd` would generate our final report in the `markdown` format.
 
-![](img/flowchart.png)
+Here is a dependency graph of our outputs, scripts and inputs used in `Makefile`.
+![](img/Makefile.png)
 
 ## V2.0 Dependencies
 
