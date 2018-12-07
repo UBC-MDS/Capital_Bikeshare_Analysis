@@ -1,4 +1,10 @@
-# run all to generate report from raw data 
+# Makefile
+#
+# By Mike Yuan and Evan Yathon, November 2018
+#
+# for automatically generating report and clean old output
+
+# run all to generate report from raw data
 all : report/capital_bikeshare_analysis.md report/capital_bikeshare_analysis.html
 
 # clean the data and save the cleaned data into result/ folder
