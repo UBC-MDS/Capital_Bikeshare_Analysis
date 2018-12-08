@@ -20,6 +20,8 @@ SUMMARY = result/summarised_data.csv \
 					report/img/dtree.png \
 					result/tree_summary.csv
 
+FEATURES_IMPORTANCE = report/img/important_features.png
+
 # run all to generate report from raw data
 all : report/capital_bikeshare_analysis.md
 
@@ -36,11 +38,11 @@ $(FIGURES) : src/eda_plots.R result/cleaned_day.csv
 	Rscript $^ report/img/plot
 
 # load the summarised_data.csv to create visualization
-report/img/important_features.png: src/important_features.R result/summarised_data.csv
+$(FEATURES_IMPORTANCE): src/important_features.R result/summarised_data.csv
 	Rscript $^ $@
 
 # generate report
-report/capital_bikeshare_analysis.md: result/cleaned_day.csv $(TARGET) $(FIGURES)
+report/capital_bikeshare_analysis.md: result/cleaned_day.csv $(TARGET) $(FIGURES) $(FEATURES_IMPORTANCE)
 	Rscript -e "rmarkdown::render('report/capital_bikeshare_analysis.Rmd')"
 
 # clean previous result and output
