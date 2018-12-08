@@ -118,7 +118,9 @@ def main():
                     rounded=True,
                     feature_names=features,
                     class_names=classes.tolist(),
-                    special_characters=True)
+                    special_characters=True,
+                    leaves_parallel=False,
+                    rotate=True)
     graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
     Image(graph.create_png())
     # saving the graph
@@ -201,7 +203,6 @@ def get_tree_depth(X_arg, y_arg, max_depth):
     return ((index + 1), test_accuracy[index])
 
 
-
-    # %% call main function
+# %% call main function
 if __name__ == "__main__":
     main()
