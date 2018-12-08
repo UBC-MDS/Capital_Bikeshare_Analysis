@@ -104,6 +104,10 @@ In order to reproduce our findings, both `Makefile` and `run_all.sh` took the sa
 Here is a dependency graph of our outputs, scripts and inputs used in `Makefile`.
 ![](img/Makefile.png)
 
+
+Here is a visual representation of our workflow.
+![](img/flowchart.png)
+
 ## V2.0 Dependencies
 
 -   ### R and R libraries (R Version 3.5.1)
