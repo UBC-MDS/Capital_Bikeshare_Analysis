@@ -68,6 +68,28 @@ Both hour.csv and day.csv had the following fields, except hr which was not avai
 
 3.  The report is generated under the  `report/` directory
 
+### Docker
+
+To run this analysis using Docker, clone/download this repository, use the command line to navigate to the root of this project on your computer, and then type the following (filling in PATH_ON_YOUR_COMPUTER with the absolute path to the root of this project on your computer).
+
+To pull the docker image
+
+```sh
+docker pull yuanmike/capital_bikeshare_analysis
+```
+
+To generate the report
+
+```sh
+docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/capital_bikeshare_analysis yuanmike/capital_bikeshare_analysis make -C 'home/capital_bikeshare_analysis' all
+```
+
+To clean the results
+
+```sh
+docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/capital_bikeshare_analysis yuanmike/capital_bikeshare_analysis make -C 'home/capital_bikeshare_analysis' clean
+```
+
 ## Workflow
 
 Our workflow was the following:
