@@ -9,12 +9,6 @@ date: "2018-11-24"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-knitr::knit_hooks$set(plot = function(x, options) {
-  paste('<figure><img src="',
-        opts_knit$get('base.url'), paste(x, collapse = '.'),
-        '"><figcaption>', options$fig.cap, '</figcaption></figure>',
-        sep = '')
-})
 
 library(tidyverse)
 library(knitr)
@@ -58,6 +52,7 @@ The final tree model is fitted to the training set and achieve `0.7415` accuracy
 ```{r fig.cap = "Figure 4. Visualization of the final fitted decision tree.", echo = FALSE}
 include_graphics("img/dtree.png")
 ```
+
 
 
 Figure 4 shows the classification steps undertaken by the model to split data into final ridership categories.  Green nodes are classified as `Low` ridership, purple are `Mid` level ridership and orange are `High` ridership.  The intensity of the colour represents purity at each location.  The stump is split immediately on the year feature, with more `Low` and `Mid` ridership belonging to 2011 and a higher proportion of high ridership belonging to 2012.  This agrees with what we've seen and guessed from figure 2, but what about season?  It would be arduous to examine the entire tree and all decision splits.
