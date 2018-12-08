@@ -31,7 +31,7 @@ To identify the important predictors, we decide to use `DecisionTreeClassifier` 
 
 The final tree model is fitted to the training set and achieve `0.7415` accuracy on our test set.
 
-<img src="img/dtree.png" width="1212" />
+<img src="img/dtree.png" width="1089" />
 
 <sup>Figure 4. Visualization of the final fitted decision tree.</sup>
 
