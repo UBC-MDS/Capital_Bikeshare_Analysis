@@ -11,19 +11,13 @@ Bike sharing systems are increasingly popular in urban centres as an easy and ef
 
 To answer this question, we decided to use a decision tree to predict daily ridership, and extract the top three predictors from the fit model. Our approach required the ridership to be split into three categories as shown below.
 
-<img src="img/plot_ridership_histo.png" alt="Figure 1. Histogram of daily bike ridership, separated into thirds." width="700px" />
-<p class="caption">
-Figure 1. Histogram of daily bike ridership, separated into thirds.
-</p>
+<img src="img/plot_ridership_histo.png" width="1800" /> <sup>Figure 1. Histogram of daily bike ridership, separated into thirds.</sup>
 
 Figure 1 gives an idea of the daily ridership count from the Capital Bikeshare system in Washington, D.C. over the period of 2011 and 2012. Our decision was to split daily ridership into equal thirds so that the decision tree would have an equal split of target categories to learn from. The resulting categories are `Low`, `Mid` and `High` ridership numbers on a daily basis.
 
 There are many different features in the dataset, including temperature, humidity and weather conditions.
 
-<img src="img/plot_rider_by_date.png" alt="Figure 2. Daily Ridership over the course of two years, coloured by season.  Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise." width="700px" />
-<p class="caption">
-Figure 2. Daily Ridership over the course of two years, coloured by season. Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise.
-</p>
+<img src="img/plot_rider_by_date.png" width="2400" /> <sup>Figure 2. Daily Ridership over the course of two years, coloured by season. Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise.</sup>
 
 As seen above in figure 2, there is a cyclical trend in the ridership numbers, with decrease in ridership happening in late autumn and winter. 2012 also seems to have significantly higher ridership numbers than 2011. The figures suggested that these features might be have been some of the predictors that we were looking for - it was interesting to compare the EDA results to those of the decision tree.
 
@@ -31,24 +25,21 @@ As seen above in figure 2, there is a cyclical trend in the ridership numbers, w
 
 To identify the important predictors, we decide to use `DecisionTreeClassifier` to build the model and utilize the `feature_importances_` to identify the importances of the features. To optimize our tree performance, we perform cross-validation on the training set to identify the ideal `max_depth`. The result of cross-validation suggested that the ideal tree depth is `4` with the accuracy of `0.8139` as shown below.
 
-<img src="img/accuracy.png" alt="Figure 3. Accuracy Score with various `max_depth` values during Cross validation" width="500px" />
-<p class="caption">
-Figure 3. Accuracy Score with various `max_depth` values during Cross validation
-</p>
+<img src="img/accuracy.png" width="500px" />
+
+<sup>Figure 3. Accuracy Score with various `max_depth` values during Cross validation</sup>
 
 The final tree model is fitted to the training set and achieve `0.7415` accuracy on our test set.
 
-<img src="img/dtree.png" alt="Figure 4. Visualization of the final fitted decision tree." width="2170" />
-<p class="caption">
-Figure 4. Visualization of the final fitted decision tree.
-</p>
+<img src="img/dtree.png" width="1212" />
+
+<sup>Figure 4. Visualization of the final fitted decision tree.</sup>
 
 Figure 4 shows the classification steps undertaken by the model to split data into final ridership categories. Green nodes are classified as `Low` ridership, purple are `Mid` level ridership and orange are `High` ridership. The intensity of the colour represents purity at each location. The stump is split immediately on the year feature, with more `Low` and `Mid` ridership belonging to 2011 and a higher proportion of high ridership belonging to 2012. This agrees with what we've seen and guessed from figure 2, but what about season? It would be arduous to examine the entire tree and all decision splits.
 
-<img src="img/important_features.png" alt="Figure 5. Feature importance rated by Gini Value." width="500px" />
-<p class="caption">
-Figure 5. Feature importance rated by Gini Value.
-</p>
+<img src="img/important_features.png" width="500px" />
+
+<sup>Figure 5. Feature importance rated by Gini Value.</sup>
 
 Figure 5 holds the answer to our initial question; it appears that temperature, year and season were the top three predictors for this dataset. Other features such as `atemp`, which is 'feels like' temperature, were also somewhat important but didn't hold as much weight as the top three.
 
