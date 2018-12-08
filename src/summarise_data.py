@@ -22,6 +22,11 @@ import pydotplus
 from IPython.display import Image
 import seaborn as sns
 import matplotlib.pyplot as plt
+font = {'family': 'normal',
+        'weight': 'bold',
+        'size': 22}
+
+plt.rc('font', **font)
 sns.set()
 from tqdm import tqdm
 
@@ -118,7 +123,9 @@ def main():
                     rounded=True,
                     feature_names=features,
                     class_names=classes.tolist(),
-                    special_characters=True)
+                    special_characters=True,
+                    leaves_parallel=False,
+                    rotate=True)
     graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
     Image(graph.create_png())
     # saving the graph
@@ -178,14 +185,16 @@ def get_tree_depth(X_arg, y_arg, max_depth):
     index = np.argmax(test_accuracy)
     print("===> saving accuracy graph")
     plt.figure(figsize=(8, 6))
+    ax = plt.gca()
+    ax.tick_params(labelsize='large')
     plt.plot(depth_list, test_accuracy, 'g-', label='Test Accuracy Score')
     plt.plot(depth_list, train_accuracy, 'r-', label='Train Accuracy Score')
     txt = 'depth = {0} with {1} accuracy'.format(
         (index + 1), round(test_accuracy[index], 4))
     #plt.axvline(x=(index + 1), ymin=0.2)
-    plt.xlabel("Max Depth for Decision Tree")
-    plt.ylabel("Accuracy Score")
-    plt.title("Tree Depth vs Accuracy ")
+    plt.xlabel("Max Depth for Decision Tree", fontsize=18)
+    plt.ylabel("Accuracy Score", fontsize=18)
+    plt.title("Tree Depth vs Accuracy ", fontsize=20)
     plt.legend()
     txt = 'depth = {0} with {1} accuracy'.format(
         (index + 1), round(test_accuracy[index], 4))
@@ -201,7 +210,6 @@ def get_tree_depth(X_arg, y_arg, max_depth):
     return ((index + 1), test_accuracy[index])
 
 
-
-    # %% call main function
+# %% call main function
 if __name__ == "__main__":
     main()
