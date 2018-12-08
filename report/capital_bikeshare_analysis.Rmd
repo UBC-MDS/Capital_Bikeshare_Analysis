@@ -20,7 +20,7 @@ Bike sharing systems are increasingly popular in urban centres as an easy and ef
 
 To answer this question, we decided to use a decision tree to predict daily ridership, and extract the top three predictors from the fit model.  Our approach required the ridership to be split into three categories as shown below.
 
-```{r fig.cap = "Figure 1. Histogram of daily bike ridership, separated into thirds.", echo = FALSE}
+```{r fig.cap = "Figure 1. Histogram of daily bike ridership, separated into thirds.", echo = FALSE, out.width = "700px"}
 include_graphics("img/plot_ridership_histo.png")
 ```
 
@@ -29,7 +29,7 @@ Figure 1 gives an idea of the daily ridership count from the Capital Bikeshare s
 
 There are many different features in the dataset, including temperature, humidity and weather conditions.
 
-```{r fig.cap = "Figure 2. Daily Ridership over the course of two years, coloured by season.  Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise.", echo = FALSE}
+```{r fig.cap = "Figure 2. Daily Ridership over the course of two years, coloured by season.  Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise.", echo = FALSE, out.width = "700px"}
 include_graphics("img/plot_rider_by_date.png")
 ```
 
@@ -54,7 +54,7 @@ include_graphics("img/dtree.png")
 
 Figure 4 shows the classification steps undertaken by the model to split data into final ridership categories.  Green nodes are classified as `Low` ridership, purple are `Mid` level ridership and orange are `High` ridership.  The intensity of the colour represents purity at each location.  The stump is split immediately on the year feature, with more `Low` and `Mid` ridership belonging to 2011 and a higher proportion of high ridership belonging to 2012.  This agrees with what we've seen and guessed from figure 2, but what about season?  It would be arduous to examine the entire tree and all decision splits.
 
-```{r fig.cap = "Figure 5. Feature importance rated by Gini Value.", echo = FALSE}
+```{r fig.cap = "Figure 5. Feature importance rated by Gini Value.", echo = FALSE, out.width = "700px"}
 include_graphics("img/important_features.png")
 ```
 

@@ -11,7 +11,7 @@ Bike sharing systems are increasingly popular in urban centres as an easy and ef
 
 To answer this question, we decided to use a decision tree to predict daily ridership, and extract the top three predictors from the fit model. Our approach required the ridership to be split into three categories as shown below.
 
-<img src="img/plot_ridership_histo.png" alt="Figure 1. Histogram of daily bike ridership, separated into thirds." width="1800" />
+<img src="img/plot_ridership_histo.png" alt="Figure 1. Histogram of daily bike ridership, separated into thirds." width="700px" />
 <p class="caption">
 Figure 1. Histogram of daily bike ridership, separated into thirds.
 </p>
@@ -20,7 +20,7 @@ Figure 1 gives an idea of the daily ridership count from the Capital Bikeshare s
 
 There are many different features in the dataset, including temperature, humidity and weather conditions.
 
-<img src="img/plot_rider_by_date.png" alt="Figure 2. Daily Ridership over the course of two years, coloured by season.  Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise." width="2400" />
+<img src="img/plot_rider_by_date.png" alt="Figure 2. Daily Ridership over the course of two years, coloured by season.  Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise." width="700px" />
 <p class="caption">
 Figure 2. Daily Ridership over the course of two years, coloured by season. Black dotted line is a 15 point moving average acting as a smoother to observe trends with less noise.
 </p>
@@ -38,14 +38,14 @@ Figure 3. Accuracy Score with various `max_depth` values during Cross validation
 
 The final tree model is fitted to the training set and achieve `0.7415` accuracy on our test set.
 
-<img src="img/dtree.png" alt="Figure 4. Visualization of the final fitted decision tree." width="2229" />
+<img src="img/dtree.png" alt="Figure 4. Visualization of the final fitted decision tree." width="2170" />
 <p class="caption">
 Figure 4. Visualization of the final fitted decision tree.
 </p>
 
 Figure 4 shows the classification steps undertaken by the model to split data into final ridership categories. Green nodes are classified as `Low` ridership, purple are `Mid` level ridership and orange are `High` ridership. The intensity of the colour represents purity at each location. The stump is split immediately on the year feature, with more `Low` and `Mid` ridership belonging to 2011 and a higher proportion of high ridership belonging to 2012. This agrees with what we've seen and guessed from figure 2, but what about season? It would be arduous to examine the entire tree and all decision splits.
 
-<img src="img/important_features.png" alt="Figure 5. Feature importance rated by Gini Value." width="2700" />
+<img src="img/important_features.png" alt="Figure 5. Feature importance rated by Gini Value." width="700px" />
 <p class="caption">
 Figure 5. Feature importance rated by Gini Value.
 </p>
