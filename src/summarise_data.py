@@ -125,6 +125,7 @@ def main():
                     class_names=classes.tolist(),
                     special_characters=True,
                     leaves_parallel=False,
+                    max_depth=3,
                     rotate=True)
     graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
     Image(graph.create_png())
