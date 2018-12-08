@@ -1,13 +1,20 @@
+
 ---
 title: "Top Predictors for Daily Ridership in the Capital Bike Share System"
 output: github_document
-
 author: "Mike Yuan and Evan Yathon"
 date: "2018-11-24"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+knitr::knit_hooks$set(plot = function(x, options) {
+  paste('<figure><img src="',
+        opts_knit$get('base.url'), paste(x, collapse = '.'),
+        '"><figcaption>', options$fig.cap, '</figcaption></figure>',
+        sep = '')
+})
 
 library(tidyverse)
 library(knitr)
@@ -65,7 +72,7 @@ Figure 5 holds the answer to our initial question; it appears that temperature, 
 ### Critique and Future Work
 
 
-Figure 1 has a large assumption that contaminates the rest of the data analysis; the values on which we split ridership into three categories.  If we chose to instead split on different values the decision tree would likely return different results than the ones we finished with.  Additionally we chose to predict on overall ridership numbers when casual and membership numbers were also available - it would be interesting to see if similar effects exist on casual and membership ridership numbers. 
+Figure 1 has a large assumption that contaminates the rest of the data analysis; the values on which we split ridership into three categories.  If we chose to instead split on different values the decision tree would likely return different results than the ones we finished with.  Additionally we chose to predict on overall ridership numbers when casual and membership numbers were also available - it would be interesting to see if similar effects exist on casual and membership ridership numbers.
 
 
 Another issue that is likely influencing our results is the year variable.  As seen in figure 2, the ridership numbers appear to substantially increase in 2012 when compared with 2011.  Therefore when we are splitting ridership, 2012 is taking most of the high ridership values as seen in figure 4.  It might be useful to use a different target such as a ratio of available bikes to riders per day in order to accomodate for bicycle network expansions.  Another way to examine it would be to split the dataset into two years and then perform the same analysis on both and compare feature importance.
