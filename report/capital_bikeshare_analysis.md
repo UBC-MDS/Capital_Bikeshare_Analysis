@@ -25,17 +25,8 @@ daily ridership, and extract the top three predictors from the fit
 model. Our approach required the ridership to be split into three
 categories as shown below.
 
-<figure>
-
-<img src="img/plot_ridership_histo.png">
-
-<figcaption>
-
-Figure 1. Histogram of daily bike ridership, separated into thirds.
-
-</figcaption>
-
-</figure>
+![](img/plot_ridership_histo.png)<!-- --> <sup>Figure 1. Histogram of
+daily bike ridership, separated into thirds.</sup>
 
 Figure 1 gives an idea of the daily ridership count from the Capital
 Bikeshare system in Washington, D.C. over the period of 2011 and 2012.
@@ -47,19 +38,10 @@ numbers on a daily basis.
 There are many different features in the dataset, including temperature,
 humidity and weather conditions.
 
-<figure>
-
-<img src="img/plot_rider_by_date.png">
-
-<figcaption>
-
-Figure 2. Daily Ridership over the course of two years, coloured by
-season. Black dotted line is a 15 point moving average acting as a
-smoother to observe trends with less noise.
-
-</figcaption>
-
-</figure>
+![](img/plot_rider_by_date.png)<!-- --> <sup>Figure 2. Daily Ridership
+over the course of two years, coloured by season. Black dotted line is a
+15 point moving average acting as a smoother to observe trends with less
+noise.</sup>
 
 As seen above in figure 2, there is a cyclical trend in the ridership
 numbers, with decrease in ridership happening in late autumn and winter.
@@ -78,33 +60,17 @@ training set to identify the ideal `max_depth`. The result of
 cross-validation suggested that the ideal tree depth is `4` with the
 accuracy of `0.8139` as shown below.
 
-<figure>
+<img src="img/accuracy.png" width="500px" />
 
-<img src="img/accuracy.png">
-
-<figcaption>
-
-Figure 3. Accuracy Score with various `max_depth` values during Cross
-validation
-
-</figcaption>
-
-</figure>
+<sup>Figure 3. Accuracy Score with various `max_depth` values during
+Cross validation</sup>
 
 The final tree model is fitted to the training set and achieve `0.7415`
 accuracy on our test set.
 
-<figure>
+![](img/dtree.png)<!-- -->
 
-<img src="img/dtree.png">
-
-<figcaption>
-
-Figure 4. Visualization of the final fitted decision tree.
-
-</figcaption>
-
-</figure>
+<sup>Figure 4. Visualization of the final fitted decision tree.</sup>
 
 Figure 4 shows the classification steps undertaken by the model to split
 data into final ridership categories. Green nodes are classified as
@@ -116,17 +82,9 @@ high ridership belonging to 2012. This agrees with what we’ve seen and
 guessed from figure 2, but what about season? It would be arduous to
 examine the entire tree and all decision splits.
 
-<figure>
+<img src="img/important_features.png" width="500px" />
 
-<img src="img/important_features.png">
-
-<figcaption>
-
-Figure 5. Feature importance rated by Gini Value.
-
-</figcaption>
-
-</figure>
+<sup>Figure 5. Feature importance rated by Gini Value.</sup>
 
 Figure 5 holds the answer to our initial question; it appears that
 temperature, year and season were the top three predictors for this
