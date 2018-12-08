@@ -21,6 +21,7 @@ Bike sharing systems are increasingly popular in urban centres as an easy and ef
 
 To answer this question, we decided to use a decision tree to predict daily ridership, and extract the top three predictors from the fit model.  Our approach required the ridership to be split into three categories as shown below.
 
+
 ```{r  echo = FALSE}
 include_graphics("img/plot_ridership_histo.png")
 ```
@@ -29,6 +30,7 @@ include_graphics("img/plot_ridership_histo.png")
 Figure 1 gives an idea of the daily ridership count from the Capital Bikeshare system in Washington, D.C. over the period of 2011 and 2012.  Our decision was to split daily ridership into equal thirds so that the decision tree would have an equal split of target categories to learn from.  The resulting categories are `Low`, `Mid` and `High` ridership numbers on a daily basis.
 
 There are many different features in the dataset, including temperature, humidity and weather conditions.
+
 
 ```{r , echo = FALSE}
 include_graphics("img/plot_rider_by_date.png")
@@ -57,6 +59,7 @@ include_graphics("img/dtree.png")
 
 
 Figure 4 shows the classification steps undertaken by the model to split data into final ridership categories.  Green nodes are classified as `Low` ridership, purple are `Mid` level ridership and orange are `High` ridership.  The intensity of the colour represents purity at each location.  The stump is split immediately on the year feature, with more `Low` and `Mid` ridership belonging to 2011 and a higher proportion of high ridership belonging to 2012.  This agrees with what we've seen and guessed from figure 2, but what about season?  It would be arduous to examine the entire tree and all decision splits.
+
 
 ```{r  echo = FALSE, out.width = "500px"}
 include_graphics("img/important_features.png")
