@@ -31,7 +31,7 @@ As seen above in figure 2, there is a cyclical trend in the ridership numbers, w
 
 To identify the important predictors, we decide to use `DecisionTreeClassifier` to build the model and utilize the `feature_importances_` to identify the importances of the features. To optimize our tree performance, we perform cross-validation on the training set to identify the ideal `max_depth`. The result of cross-validation suggested that the ideal tree depth is `4` with the accuracy of `0.8139` as shown below.
 
-<img src="img/accuracy.png" alt="Figure 3. Accuracy Score with various `max_depth` values during Cross validation" width="800" />
+<img src="img/accuracy.png" alt="Figure 3. Accuracy Score with various `max_depth` values during Cross validation" width="500px" />
 <p class="caption">
 Figure 3. Accuracy Score with various `max_depth` values during Cross validation
 </p>
@@ -45,7 +45,7 @@ Figure 4. Visualization of the final fitted decision tree.
 
 Figure 4 shows the classification steps undertaken by the model to split data into final ridership categories. Green nodes are classified as `Low` ridership, purple are `Mid` level ridership and orange are `High` ridership. The intensity of the colour represents purity at each location. The stump is split immediately on the year feature, with more `Low` and `Mid` ridership belonging to 2011 and a higher proportion of high ridership belonging to 2012. This agrees with what we've seen and guessed from figure 2, but what about season? It would be arduous to examine the entire tree and all decision splits.
 
-<img src="img/important_features.png" alt="Figure 5. Feature importance rated by Gini Value." width="700px" />
+<img src="img/important_features.png" alt="Figure 5. Feature importance rated by Gini Value." width="500px" />
 <p class="caption">
 Figure 5. Feature importance rated by Gini Value.
 </p>

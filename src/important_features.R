@@ -16,23 +16,24 @@ output_file <- args[2]
 suppressMessages(library(tidyverse))
 
 main <- function(){
-      
+
       imp_feat <- read_csv(input_file)
-      
+
       # imp_feat <- read_csv("result/summarised_data.csv")
-      
-      (imp_feat_plot <- imp_feat %>% 
-            select(-X1) %>% 
+
+      (imp_feat_plot <- imp_feat %>%
+            select(-X1) %>%
             ggplot(aes(x = fct_reorder(feature,gini_value), y = gini_value)) +
                   geom_col(colour = "Black",
                            fill = "dodgerblue3") +
-                  theme(text = element_text(size = 15)) +
+                  theme(text = element_text(size = 16),
+                        axis.text.y= element_text(size = 18)) +
                   coord_flip() +
                   labs(y = "Gini Value (Feature Importance)",
                        x = "Features",
                        title = "Importance of Features in Bike Share Dataset")
       )
-      
+
       #save the plots to the specified file
       ggsave(output_file,
              plot = imp_feat_plot, device = "png", width = 9)
